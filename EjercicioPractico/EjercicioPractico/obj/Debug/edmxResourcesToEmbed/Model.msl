@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EPracticoDBModelStoreContainer" CdmEntityContainer="EPracticoDBEntities">
+    <EntitySetMapping Name="Caja">
+      <EntityTypeMapping TypeName="EPracticoDBModel.Caja">
+        <MappingFragment StoreEntitySet="Caja">
+          <ScalarProperty Name="CajaID" ColumnName="CajaID" />
+          <ScalarProperty Name="EstadoCajaID" ColumnName="EstadoCajaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CajaCliente">
+      <EntityTypeMapping TypeName="EPracticoDBModel.CajaCliente">
+        <MappingFragment StoreEntitySet="CajaCliente">
+          <ScalarProperty Name="EstadoCajaClienteID" ColumnName="EstadoCajaClienteID" />
+          <ScalarProperty Name="CajaClienteID" ColumnName="CajaClienteID" />
+          <ScalarProperty Name="CajaID" ColumnName="CajaID" />
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="EPracticoDBModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoCaja">
+      <EntityTypeMapping TypeName="EPracticoDBModel.EstadoCaja">
+        <MappingFragment StoreEntitySet="EstadoCaja">
+          <ScalarProperty Name="EstadoCajaID" ColumnName="EstadoCajaID" />
+          <ScalarProperty Name="EstadoCajaDescripcion" ColumnName="EstadoCajaDescripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoCajaCliente">
+      <EntityTypeMapping TypeName="EPracticoDBModel.EstadoCajaCliente">
+        <MappingFragment StoreEntitySet="EstadoCajaCliente">
+          <ScalarProperty Name="EstadoCajaClienteDescripcion" ColumnName="EstadoCajaClienteDescripcion" />
+          <ScalarProperty Name="EstadoCajaClienteID" ColumnName="EstadoCajaClienteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

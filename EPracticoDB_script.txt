@@ -1,0 +1,43 @@
+CREATE DATABASE EPracticoDB;
+GO
+USE EPracticoDB; 
+CREATE TABLE EstadoCaja
+(
+    EstadoCajaID int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    EstadoCajaDescripcion nvarchar(100) NOT NULL
+);
+GO
+insert into EstadoCaja(EstadoCajaDescripcion) 
+values ('Abierta'),
+	   ('Cerrada')
+GO
+CREATE TABLE EstadoCajaCliente
+(
+    EstadoCajaClienteID int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    EstadoCajaClienteDescripcion nvarchar(100) NOT NULL
+);
+GO
+insert into EstadoCajaCliente(EstadoCajaClienteDescripcion) 
+values ('Atendido'),
+	   ('Por atender')
+GO
+CREATE TABLE Caja
+(
+CajaID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+EstadoCajaID int NOT NULL CONSTRAINT FK_EstadoCaja_Caja REFERENCES EstadoCaja(EstadoCajaID)
+);
+GO
+CREATE TABLE Cliente
+(
+ClienteID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+Nombre nvarchar(100) not null
+);
+GO
+CREATE TABLE CajaCliente
+(
+CajaClienteID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+CajaID int NOT NULL CONSTRAINT FK_Caja_CajaCliente REFERENCES Caja(CajaID),
+ClienteID int NOT NULL CONSTRAINT FK_Cliente_CajaCliente REFERENCES Cliente(ClienteID),
+EstadoCajaClienteID int NOT NULL CONSTRAINT FK_EstadoCajaCliente_CajaCliente REFERENCES EstadoCajaCliente(EstadoCajaClienteID)
+);
+

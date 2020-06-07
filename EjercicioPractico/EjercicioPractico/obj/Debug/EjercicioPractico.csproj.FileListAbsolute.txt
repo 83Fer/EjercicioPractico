@@ -1,0 +1,16 @@
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\bin\Debug\EjercicioPractico.exe.config
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\bin\Debug\EjercicioPractico.exe
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\bin\Debug\EjercicioPractico.pdb
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\obj\Debug\EjercicioPractico.csprojAssemblyReference.cache
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\obj\Debug\EjercicioPractico.Properties.Resources.resources
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\obj\Debug\EjercicioPractico.csproj.GenerateResource.cache
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\obj\Debug\EjercicioPractico.csproj.CoreCompileInputs.cache
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\obj\Debug\EjercicioPractico.exe
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\obj\Debug\EjercicioPractico.pdb
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\obj\Debug\EjercicioPractico.FormPrincipal.resources
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\bin\Debug\EntityFramework.dll
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\bin\Debug\EntityFramework.SqlServer.dll
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\bin\Debug\EntityFramework.xml
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\bin\Debug\EntityFramework.SqlServer.xml
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\obj\Debug\EjercicioPractico.csproj.CopyComplete
+D:\Proyectos Cursos\App escritorio\EjercicioPractico\EjercicioPractico\obj\Debug\EjercicioPractico.FormCliente.resources

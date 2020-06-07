@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EPracticoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Caja">
+          <Key>
+            <PropertyRef Name="CajaID" />
+          </Key>
+          <Property Name="CajaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstadoCajaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CajaCliente">
+          <Key>
+            <PropertyRef Name="CajaClienteID" />
+          </Key>
+          <Property Name="CajaClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CajaID" Type="int" Nullable="false" />
+          <Property Name="ClienteID" Type="int" Nullable="false" />
+          <Property Name="EstadoCajaClienteID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoCaja">
+          <Key>
+            <PropertyRef Name="EstadoCajaID" />
+          </Key>
+          <Property Name="EstadoCajaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstadoCajaDescripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoCajaCliente">
+          <Key>
+            <PropertyRef Name="EstadoCajaClienteID" />
+          </Key>
+          <Property Name="EstadoCajaClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstadoCajaClienteDescripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Caja_CajaCliente">
+          <End Role="Caja" Type="Self.Caja" Multiplicity="1" />
+          <End Role="CajaCliente" Type="Self.CajaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caja">
+              <PropertyRef Name="CajaID" />
+            </Principal>
+            <Dependent Role="CajaCliente">
+              <PropertyRef Name="CajaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_CajaCliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="CajaCliente" Type="Self.CajaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="CajaCliente">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadoCaja_Caja">
+          <End Role="EstadoCaja" Type="Self.EstadoCaja" Multiplicity="1" />
+          <End Role="Caja" Type="Self.Caja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoCaja">
+              <PropertyRef Name="EstadoCajaID" />
+            </Principal>
+            <Dependent Role="Caja">
+              <PropertyRef Name="EstadoCajaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadoCajaCliente_CajaCliente">
+          <End Role="EstadoCajaCliente" Type="Self.EstadoCajaCliente" Multiplicity="1" />
+          <End Role="CajaCliente" Type="Self.CajaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoCajaCliente">
+              <PropertyRef Name="EstadoCajaClienteID" />
+            </Principal>
+            <Dependent Role="CajaCliente">
+              <PropertyRef Name="EstadoCajaClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EPracticoDBModelStoreContainer">
+          <EntitySet Name="Caja" EntityType="Self.Caja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CajaCliente" EntityType="Self.CajaCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoCaja" EntityType="Self.EstadoCaja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoCajaCliente" EntityType="Self.EstadoCajaCliente" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Caja_CajaCliente" Association="Self.FK_Caja_CajaCliente">
+            <End Role="Caja" EntitySet="Caja" />
+            <End Role="CajaCliente" EntitySet="CajaCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_CajaCliente" Association="Self.FK_Cliente_CajaCliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="CajaCliente" EntitySet="CajaCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadoCaja_Caja" Association="Self.FK_EstadoCaja_Caja">
+            <End Role="EstadoCaja" EntitySet="EstadoCaja" />
+            <End Role="Caja" EntitySet="Caja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadoCajaCliente_CajaCliente" Association="Self.FK_EstadoCajaCliente_CajaCliente">
+            <End Role="EstadoCajaCliente" EntitySet="EstadoCajaCliente" />
+            <End Role="CajaCliente" EntitySet="CajaCliente" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EPracticoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Caja">
+          <Key>
+            <PropertyRef Name="CajaID" />
+          </Key>
+          <Property Name="CajaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstadoCajaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CajaCliente" Relationship="Self.FK_Caja_CajaCliente" FromRole="Caja" ToRole="CajaCliente" />
+          <NavigationProperty Name="EstadoCaja" Relationship="Self.FK_EstadoCaja_Caja" FromRole="Caja" ToRole="EstadoCaja" />
+        </EntityType>
+        <EntityType Name="CajaCliente">
+          <Key>
+            <PropertyRef Name="CajaClienteID" />
+          </Key>
+          <Property Name="CajaClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CajaID" Type="Int32" Nullable="false" />
+          <Property Name="ClienteID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Caja" Relationship="Self.FK_Caja_CajaCliente" FromRole="CajaCliente" ToRole="Caja" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_CajaCliente" FromRole="CajaCliente" ToRole="Cliente" />
+          <Property Name="EstadoCajaClienteID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EstadoCajaCliente" Relationship="EPracticoDBModel.FK_EstadoCajaCliente_CajaCliente" FromRole="CajaCliente" ToRole="EstadoCajaCliente" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CajaCliente" Relationship="Self.FK_Cliente_CajaCliente" FromRole="Cliente" ToRole="CajaCliente" />
+        </EntityType>
+        <EntityType Name="EstadoCaja">
+          <Key>
+            <PropertyRef Name="EstadoCajaID" />
+          </Key>
+          <Property Name="EstadoCajaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstadoCajaDescripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Caja" Relationship="Self.FK_EstadoCaja_Caja" FromRole="EstadoCaja" ToRole="Caja" />
+        </EntityType>
+        <Association Name="FK_Caja_CajaCliente">
+          <End Role="Caja" Type="Self.Caja" Multiplicity="1" />
+          <End Role="CajaCliente" Type="Self.CajaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caja">
+              <PropertyRef Name="CajaID" />
+            </Principal>
+            <Dependent Role="CajaCliente">
+              <PropertyRef Name="CajaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadoCaja_Caja">
+          <End Role="EstadoCaja" Type="Self.EstadoCaja" Multiplicity="1" />
+          <End Role="Caja" Type="Self.Caja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoCaja">
+              <PropertyRef Name="EstadoCajaID" />
+            </Principal>
+            <Dependent Role="Caja">
+              <PropertyRef Name="EstadoCajaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_CajaCliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="CajaCliente" Type="Self.CajaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="CajaCliente">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EPracticoDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Caja" EntityType="Self.Caja" />
+          <EntitySet Name="CajaCliente" EntityType="Self.CajaCliente" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="EstadoCaja" EntityType="Self.EstadoCaja" />
+          <AssociationSet Name="FK_Caja_CajaCliente" Association="Self.FK_Caja_CajaCliente">
+            <End Role="Caja" EntitySet="Caja" />
+            <End Role="CajaCliente" EntitySet="CajaCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadoCaja_Caja" Association="Self.FK_EstadoCaja_Caja">
+            <End Role="EstadoCaja" EntitySet="EstadoCaja" />
+            <End Role="Caja" EntitySet="Caja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_CajaCliente" Association="Self.FK_Cliente_CajaCliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="CajaCliente" EntitySet="CajaCliente" />
+          </AssociationSet>
+          <EntitySet Name="EstadoCajaCliente" EntityType="EPracticoDBModel.EstadoCajaCliente" />
+          <AssociationSet Name="FK_EstadoCajaCliente_CajaCliente" Association="EPracticoDBModel.FK_EstadoCajaCliente_CajaCliente">
+            <End Role="EstadoCajaCliente" EntitySet="EstadoCajaCliente" />
+            <End Role="CajaCliente" EntitySet="CajaCliente" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="EstadoCajaCliente">
+          <Key>
+            <PropertyRef Name="EstadoCajaClienteID" />
+          </Key>
+          <Property Name="EstadoCajaClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstadoCajaClienteDescripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CajaCliente" Relationship="EPracticoDBModel.FK_EstadoCajaCliente_CajaCliente" FromRole="EstadoCajaCliente" ToRole="CajaCliente" />
+        </EntityType>
+        <Association Name="FK_EstadoCajaCliente_CajaCliente">
+          <End Type="EPracticoDBModel.EstadoCajaCliente" Role="EstadoCajaCliente" Multiplicity="1" />
+          <End Type="EPracticoDBModel.CajaCliente" Role="CajaCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoCajaCliente">
+              <PropertyRef Name="EstadoCajaClienteID" />
+            </Principal>
+            <Dependent Role="CajaCliente">
+              <PropertyRef Name="EstadoCajaClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EPracticoDBModelStoreContainer" CdmEntityContainer="EPracticoDBEntities">
+          <EntitySetMapping Name="Caja">
+            <EntityTypeMapping TypeName="EPracticoDBModel.Caja">
+              <MappingFragment StoreEntitySet="Caja">
+                <ScalarProperty Name="CajaID" ColumnName="CajaID" />
+                <ScalarProperty Name="EstadoCajaID" ColumnName="EstadoCajaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CajaCliente">
+            <EntityTypeMapping TypeName="EPracticoDBModel.CajaCliente">
+              <MappingFragment StoreEntitySet="CajaCliente">
+                <ScalarProperty Name="EstadoCajaClienteID" ColumnName="EstadoCajaClienteID" />
+                <ScalarProperty Name="CajaClienteID" ColumnName="CajaClienteID" />
+                <ScalarProperty Name="CajaID" ColumnName="CajaID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="EPracticoDBModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoCaja">
+            <EntityTypeMapping TypeName="EPracticoDBModel.EstadoCaja">
+              <MappingFragment StoreEntitySet="EstadoCaja">
+                <ScalarProperty Name="EstadoCajaID" ColumnName="EstadoCajaID" />
+                <ScalarProperty Name="EstadoCajaDescripcion" ColumnName="EstadoCajaDescripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoCajaCliente">
+            <EntityTypeMapping TypeName="EPracticoDBModel.EstadoCajaCliente">
+              <MappingFragment StoreEntitySet="EstadoCajaCliente">
+                <ScalarProperty Name="EstadoCajaClienteDescripcion" ColumnName="EstadoCajaClienteDescripcion" />
+                <ScalarProperty Name="EstadoCajaClienteID" ColumnName="EstadoCajaClienteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
